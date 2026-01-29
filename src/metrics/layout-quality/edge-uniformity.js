@@ -30,19 +30,14 @@ module.exports = function edgeUniformity(graph) {
 
   var lengths = new Float64Array(graph.size);
 
-  graph.forEachEdge(function (
-    edge,
-    attr,
-    source,
-    target,
-    sourceAttr,
-    targetAttr
-  ) {
-    var edgeLength = euclideanDistance(sourceAttr, targetAttr);
+  graph.forEachEdge(
+    function (edge, attr, source, target, sourceAttr, targetAttr) {
+      var edgeLength = euclideanDistance(sourceAttr, targetAttr);
 
-    lengths[i++] = edgeLength;
-    sum += edgeLength;
-  });
+      lengths[i++] = edgeLength;
+      sum += edgeLength;
+    }
+  );
 
   var avg = sum / graph.size;
 

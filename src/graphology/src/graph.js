@@ -62,28 +62,28 @@ const EMITTER_PROPS = new Set([
 
 const EDGE_ADD_METHODS = [
   {
-    name: verb => `${verb}Edge`,
+    name: (verb) => `${verb}Edge`,
     generateKey: true
   },
   {
-    name: verb => `${verb}DirectedEdge`,
+    name: (verb) => `${verb}DirectedEdge`,
     generateKey: true,
     type: 'directed'
   },
   {
-    name: verb => `${verb}UndirectedEdge`,
+    name: (verb) => `${verb}UndirectedEdge`,
     generateKey: true,
     type: 'undirected'
   },
   {
-    name: verb => `${verb}EdgeWithKey`
+    name: (verb) => `${verb}EdgeWithKey`
   },
   {
-    name: verb => `${verb}DirectedEdgeWithKey`,
+    name: (verb) => `${verb}DirectedEdgeWithKey`,
     type: 'directed'
   },
   {
-    name: verb => `${verb}UndirectedEdgeWithKey`,
+    name: (verb) => `${verb}UndirectedEdgeWithKey`,
     type: 'undirected'
   }
 ];
@@ -630,8 +630,8 @@ export default class Graph extends EventEmitter {
       options.type === 'mixed'
         ? MixedNodeData
         : options.type === 'directed'
-        ? DirectedNodeData
-        : UndirectedNodeData;
+          ? DirectedNodeData
+          : UndirectedNodeData;
 
     privateProperty(this, 'NodeDataClass', NodeDataClass);
 
@@ -673,7 +673,7 @@ export default class Graph extends EventEmitter {
     privateProperty(this, '_options', options);
 
     // Emitter properties
-    EMITTER_PROPS.forEach(prop => privateProperty(this, prop, this[prop]));
+    EMITTER_PROPS.forEach((prop) => privateProperty(this, prop, this[prop]));
 
     //-- Properties readers
     readOnlyProperty(this, 'order', () => this._nodes.size);
@@ -2712,8 +2712,8 @@ export default class Graph extends EventEmitter {
               ? this.mergeUndirectedEdgeWithKey
               : this.mergeDirectedEdgeWithKey
             : undirected
-            ? this.addUndirectedEdgeWithKey
-            : this.addDirectedEdgeWithKey;
+              ? this.addUndirectedEdgeWithKey
+              : this.addDirectedEdgeWithKey;
 
           method.call(this, edge.key, source, target, attributes);
         } else {
@@ -2722,8 +2722,8 @@ export default class Graph extends EventEmitter {
               ? this.mergeUndirectedEdge
               : this.mergeDirectedEdge
             : undirected
-            ? this.addUndirectedEdge
-            : this.addDirectedEdge;
+              ? this.addUndirectedEdge
+              : this.addDirectedEdge;
 
           method.call(this, source, target, attributes);
         }
@@ -2942,8 +2942,8 @@ if (typeof Symbol !== 'undefined')
 /**
  * Related to edge addition.
  */
-EDGE_ADD_METHODS.forEach(method => {
-  ['add', 'merge', 'update'].forEach(verb => {
+EDGE_ADD_METHODS.forEach((method) => {
+  ['add', 'merge', 'update'].forEach((verb) => {
     const name = method.name(verb);
     const fn = verb === 'add' ? addEdge : mergeEdge;
 

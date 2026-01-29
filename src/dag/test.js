@@ -294,7 +294,7 @@ describe('graphology-dag', function () {
       assert.strictEqual(P6.size, 5);
 
       const generations = topologicalGenerations(P6);
-      const generationsSet = generations.map(gen => {
+      const generationsSet = generations.map((gen) => {
         return new Set(gen);
       });
 
@@ -324,7 +324,7 @@ describe('graphology-dag', function () {
       assert.strictEqual(graph.size, 7);
 
       const generations = topologicalGenerations(graph);
-      const generationsSet = generations.map(gen => {
+      const generationsSet = generations.map((gen) => {
         return new Set(gen);
       });
 
@@ -353,7 +353,7 @@ describe('graphology-dag', function () {
 
       const generations = [];
 
-      forEachTopologicalGeneration(graph, gen => {
+      forEachTopologicalGeneration(graph, (gen) => {
         generations.push(new Set(gen));
       });
 
@@ -371,7 +371,7 @@ describe('graphology-dag', function () {
       graph.mergeNode(3);
 
       const generations = [];
-      forEachTopologicalGeneration(graph, gen => {
+      forEachTopologicalGeneration(graph, (gen) => {
         generations.push(new Set(gen));
       });
 
@@ -383,7 +383,7 @@ describe('graphology-dag', function () {
 
       const nodes = [];
 
-      forEachNodeInTopologicalOrder(graph, node => {
+      forEachNodeInTopologicalOrder(graph, (node) => {
         nodes.push(node);
       });
 
@@ -391,7 +391,7 @@ describe('graphology-dag', function () {
 
       const generations = [];
 
-      forEachTopologicalGeneration(graph, gen => {
+      forEachTopologicalGeneration(graph, (gen) => {
         generations.push(gen);
       });
 

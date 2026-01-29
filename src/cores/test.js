@@ -163,89 +163,89 @@ describe('graphology-cores', function () {
   it('should return the subgrah of the main core.', function () {
     const graph = prepareGraphH();
     const subgraph = core.kCore(graph);
-    const nodes = subgraph.mapNodes(a => a);
+    const nodes = subgraph.mapNodes((a) => a);
     assert.deepEqual(new Set(nodes), new Set([2, 4, 5, 6]));
   });
 
   it('should return the subgraph of any k core.', function () {
     let graph = prepareGraphH();
     let subgraph = core.kCore(graph, 0);
-    let nodes = subgraph.mapNodes(a => a);
-    assert.deepEqual(new Set(nodes), new Set(graph.mapNodes(a => a)));
+    let nodes = subgraph.mapNodes((a) => a);
+    assert.deepEqual(new Set(nodes), new Set(graph.mapNodes((a) => a)));
 
     graph = prepareGraphH();
     subgraph = core.kCore(graph, 1);
-    nodes = subgraph.mapNodes(a => a);
+    nodes = subgraph.mapNodes((a) => a);
     assert.deepEqual(new Set(nodes), new Set([1, 2, 3, 4, 5, 6]));
 
     graph = prepareGraphH();
     subgraph = core.kCore(graph, 2);
-    nodes = subgraph.mapNodes(a => a);
+    nodes = subgraph.mapNodes((a) => a);
     assert.deepEqual(new Set(nodes), new Set([2, 4, 5, 6]));
   });
 
   it('should return the subgraph of the main crust.', function () {
     const graph = prepareGraphH();
     const subgraph = core.kCrust(graph);
-    const nodes = subgraph.mapNodes(a => a);
+    const nodes = subgraph.mapNodes((a) => a);
     assert.deepEqual(new Set(nodes), new Set([0, 1, 3]));
   });
 
   it('should return the subgraph of any k crust.', function () {
     let graph = prepareGraphH();
     let subgraph = core.kCrust(graph, 0);
-    let nodes = subgraph.mapNodes(a => a);
+    let nodes = subgraph.mapNodes((a) => a);
     assert.deepEqual(new Set(nodes), new Set([0]));
 
     graph = prepareGraphH();
     subgraph = core.kCrust(graph, 1);
-    nodes = subgraph.mapNodes(a => a);
+    nodes = subgraph.mapNodes((a) => a);
     assert.deepEqual(new Set(nodes), new Set([0, 1, 3]));
 
     graph = prepareGraphH();
     subgraph = core.kCrust(graph, 2);
-    nodes = subgraph.mapNodes(a => a);
-    assert.deepEqual(new Set(nodes), new Set(graph.mapNodes(a => a)));
+    nodes = subgraph.mapNodes((a) => a);
+    assert.deepEqual(new Set(nodes), new Set(graph.mapNodes((a) => a)));
   });
 
   it('should return the subgraph of the main shell.', function () {
     const graph = prepareGraphH();
     const subgraph = core.kShell(graph);
-    const nodes = subgraph.mapNodes(a => a);
+    const nodes = subgraph.mapNodes((a) => a);
     assert.deepEqual(new Set(nodes), new Set([2, 4, 5, 6]));
   });
 
   it('should return the subgraph of any k shell.', function () {
     let graph = prepareGraphH();
     let subgraph = core.kShell(graph, 0);
-    let nodes = subgraph.mapNodes(a => a);
+    let nodes = subgraph.mapNodes((a) => a);
     assert.deepEqual(new Set(nodes), new Set([0]));
 
     graph = prepareGraphH();
     subgraph = core.kShell(graph, 1);
-    nodes = subgraph.mapNodes(a => a);
+    nodes = subgraph.mapNodes((a) => a);
     assert.deepEqual(new Set(nodes), new Set([1, 3]));
 
     graph = prepareGraphH();
     subgraph = core.kShell(graph, 2);
-    nodes = subgraph.mapNodes(a => a);
+    nodes = subgraph.mapNodes((a) => a);
     assert.deepEqual(new Set(nodes), new Set([2, 4, 5, 6]));
   });
 
   it('should return the subgraph of any k corona.', function () {
     let graph = prepareGraphH();
     let subgraph = core.kCorona(graph, 0);
-    let nodes = subgraph.mapNodes(a => a);
+    let nodes = subgraph.mapNodes((a) => a);
     assert.deepEqual(new Set(nodes), new Set([0]));
 
     graph = prepareGraphH();
     subgraph = core.kCorona(graph, 1);
-    nodes = subgraph.mapNodes(a => a);
+    nodes = subgraph.mapNodes((a) => a);
     assert.deepEqual(new Set(nodes), new Set([1]));
 
     graph = prepareGraphH();
     subgraph = core.kCorona(graph, 2);
-    nodes = subgraph.mapNodes(a => a);
+    nodes = subgraph.mapNodes((a) => a);
     assert.deepEqual(new Set(nodes), new Set([2, 4, 5, 6]));
   });
 
@@ -316,7 +316,7 @@ describe('graphology-cores', function () {
     const nodesByLayer = [];
     for (let i = 1; i < 7; ++i) {
       const layer = new Set();
-      Object.keys(onion).forEach(node => {
+      Object.keys(onion).forEach((node) => {
         if (onion[node] === i) layer.add(node);
       });
       nodesByLayer.push(layer);
@@ -334,7 +334,7 @@ describe('graphology-cores', function () {
     const graph = prepareGraphG();
     const onion = core.onionLayers.assign(graph, 'onion');
 
-    graph.forEachNode(node => {
+    graph.forEachNode((node) => {
       const layer = graph.getNodeAttribute(node, 'onion');
       assert.equal(layer, onion[node]);
     });
@@ -344,7 +344,7 @@ describe('graphology-cores', function () {
     const graph = prepareGraphG();
     const degen = core.coreNumber.assign(graph, 'core');
 
-    graph.forEachNode(node => {
+    graph.forEachNode((node) => {
       const layer = graph.getNodeAttribute(node, 'core');
       assert.equal(layer, degen[node]);
     });

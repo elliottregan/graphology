@@ -48,7 +48,7 @@ describe('graphology-bipartite', function () {
         false
       );
       assert.strictEqual(
-        isBipartiteBy(graph, n => n),
+        isBipartiteBy(graph, (n) => n),
         false
       );
     });

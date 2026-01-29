@@ -27,21 +27,21 @@ function coreNumber(assign, graph, coreAttribute) {
   const neighbors = {};
   let maxDegree = 0;
 
-  graph.forEachNode(node => {
+  graph.forEachNode((node) => {
     const n = [];
     const d = graph.degree(node);
 
     if (graph.type !== 'undirected') {
-      graph.forEachInNeighbor(node, nbr => {
+      graph.forEachInNeighbor(node, (nbr) => {
         n.push(nbr);
       });
-      graph.forEachOutNeighbor(node, nbr => {
+      graph.forEachOutNeighbor(node, (nbr) => {
         n.push(nbr);
       });
     }
 
     if (graph.type !== 'directed') {
-      graph.forEachUndirectedNeighbor(node, nbr => {
+      graph.forEachUndirectedNeighbor(node, (nbr) => {
         n.push(nbr);
       });
     }
@@ -76,7 +76,7 @@ function coreNumber(assign, graph, coreAttribute) {
     }
   }
 
-  nodes.forEach(node => {
+  nodes.forEach((node) => {
     const n = neighbors[node];
     const nd = core[node];
 
@@ -170,7 +170,7 @@ function kCrust(graph, k, customCore) {
     }
   }
 
-  return subgraph(graph, node => {
+  return subgraph(graph, (node) => {
     const ccf = customCore[node];
 
     return ccf <= k;
@@ -234,7 +234,7 @@ function kTruss(graph, k) {
     const toDrop = [];
     const seen = new Set();
 
-    H.forEachNode(node => {
+    H.forEachNode((node) => {
       const nbrs = new Set(H.neighbors(node));
       seen.add(node);
       const newNbrs = [...nbrs].reduce((acc, v) => {
@@ -242,7 +242,7 @@ function kTruss(graph, k) {
         return acc;
       }, []);
 
-      newNbrs.forEach(nbr => {
+      newNbrs.forEach((nbr) => {
         const nbrNbrs = new Set(H.neighbors(nbr));
         const intersection = new Set();
 
@@ -253,11 +253,11 @@ function kTruss(graph, k) {
       });
     });
 
-    toDrop.forEach(edge => {
+    toDrop.forEach((edge) => {
       if (edge) H.dropEdge(edge);
     });
     nDropped = toDrop.length;
-    H.forEachNode(node => {
+    H.forEachNode((node) => {
       if (H.degree(node) === 0) {
         H.dropNode(node);
       }
@@ -298,7 +298,7 @@ function onionLayers(assign, graph, nodeOnionLayerAttribute) {
   let degrees = {};
   const neighbors = {};
   const isolatedNodes = [];
-  graph.forEachNode(node => {
+  graph.forEachNode((node) => {
     // Adding degrees
     const deg = graph.degree(node);
     degrees[node] = deg;
@@ -314,7 +314,7 @@ function onionLayers(assign, graph, nodeOnionLayerAttribute) {
 
   // Isolated nodes
   if (isolatedNodes.length > 0) {
-    isolatedNodes.forEach(node => {
+    isolatedNodes.forEach((node) => {
       odLayers[node] = currentLayer;
       degrees = remove(degrees, node);
     });

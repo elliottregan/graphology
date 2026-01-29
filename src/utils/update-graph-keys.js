@@ -22,48 +22,42 @@ module.exports = function updateGraphKeys(
   // Renaming edges
   var currentSource, currentSourceRenamed;
 
-  graph.forEachAssymetricAdjacencyEntry(function (
-    source,
-    target,
-    sourceAttr,
-    targetAttr,
-    key,
-    attr,
-    undirected
-  ) {
-    // Leveraging the ordered adjacency to save calls
-    if (source !== currentSource) {
-      currentSource = source;
-      currentSourceRenamed = nodeKeyUpdater
-        ? nodeKeyUpdater(source, sourceAttr)
-        : source;
+  graph.forEachAssymetricAdjacencyEntry(
+    function (source, target, sourceAttr, targetAttr, key, attr, undirected) {
+      // Leveraging the ordered adjacency to save calls
+      if (source !== currentSource) {
+        currentSource = source;
+        currentSourceRenamed = nodeKeyUpdater
+          ? nodeKeyUpdater(source, sourceAttr)
+          : source;
+      }
+
+      var targetRenamed = nodeKeyUpdater
+        ? nodeKeyUpdater(target, targetAttr)
+        : target;
+
+      var renamedKey = edgeKeyUpdater
+        ? edgeKeyUpdater(
+            key,
+            attr,
+            source,
+            target,
+            sourceAttr,
+            targetAttr,
+            undirected
+          )
+        : key;
+
+      copyEdge(
+        renamed,
+        undirected,
+        renamedKey,
+        currentSourceRenamed,
+        targetRenamed,
+        attr
+      );
     }
-
-    var targetRenamed = nodeKeyUpdater
-      ? nodeKeyUpdater(target, targetAttr)
-      : target;
-
-    var renamedKey = edgeKeyUpdater
-      ? edgeKeyUpdater(
-          key,
-          attr,
-          source,
-          target,
-          sourceAttr,
-          targetAttr,
-          undirected
-        )
-      : key;
-
-    copyEdge(
-      renamed,
-      undirected,
-      renamedKey,
-      currentSourceRenamed,
-      targetRenamed,
-      attr
-    );
-  });
+  );
 
   return renamed;
 };

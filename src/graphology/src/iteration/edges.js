@@ -1224,7 +1224,7 @@ function attachEdgeIteratorCreator(Class, description) {
  * @param {function} Graph - Graph class.
  */
 export default function attachEdgeIterationMethods(Graph) {
-  EDGES_ITERATION.forEach(description => {
+  EDGES_ITERATION.forEach((description) => {
     attachEdgeArrayCreator(Graph, description);
     attachForEachEdge(Graph, description);
     attachFindEdge(Graph, description);

@@ -65,21 +65,15 @@ module.exports = function subgraph(graph, nodes) {
     });
   }
 
-  graph.forEachEdge(function (
-    key,
-    attr,
-    source,
-    target,
-    sourceAttr,
-    targetAttr,
-    undirected
-  ) {
-    if (!filterNode(source, sourceAttr)) return;
+  graph.forEachEdge(
+    function (key, attr, source, target, sourceAttr, targetAttr, undirected) {
+      if (!filterNode(source, sourceAttr)) return;
 
-    if (target !== source && !filterNode(target, targetAttr)) return;
+      if (target !== source && !filterNode(target, targetAttr)) return;
 
-    copyEdge(S, undirected, key, source, target, attr);
-  });
+      copyEdge(S, undirected, key, source, target, attr);
+    }
+  );
 
   return S;
 };

@@ -397,29 +397,23 @@ function undirectedSparseModularity(graph, options) {
     options.getEdgeWeight
   ).fromEntry;
 
-  graph.forEachUndirectedEdge(function (
-    edge,
-    edgeAttr,
-    source,
-    target,
-    sa,
-    ta,
-    u
-  ) {
-    var weight = getEdgeWeight(edge, edgeAttr, source, target, sa, ta, u);
+  graph.forEachUndirectedEdge(
+    function (edge, edgeAttr, source, target, sa, ta, u) {
+      var weight = getEdgeWeight(edge, edgeAttr, source, target, sa, ta, u);
 
-    M += weight;
+      M += weight;
 
-    var sourceCommunity = communities[source];
-    var targetCommunity = communities[target];
+      var sourceCommunity = communities[source];
+      var targetCommunity = communities[target];
 
-    totalWeights[sourceCommunity] += weight;
-    totalWeights[targetCommunity] += weight;
+      totalWeights[sourceCommunity] += weight;
+      totalWeights[targetCommunity] += weight;
 
-    if (sourceCommunity !== targetCommunity) return;
+      if (sourceCommunity !== targetCommunity) return;
 
-    internalWeights[sourceCommunity] += weight * 2;
-  });
+      internalWeights[sourceCommunity] += weight * 2;
+    }
+  );
 
   var Q = 0;
   var M2 = M * 2;
@@ -447,29 +441,23 @@ function directedSparseModularity(graph, options) {
     options.getEdgeWeight
   ).fromEntry;
 
-  graph.forEachDirectedEdge(function (
-    edge,
-    edgeAttr,
-    source,
-    target,
-    sa,
-    ta,
-    u
-  ) {
-    var weight = getEdgeWeight(edge, edgeAttr, source, target, sa, ta, u);
+  graph.forEachDirectedEdge(
+    function (edge, edgeAttr, source, target, sa, ta, u) {
+      var weight = getEdgeWeight(edge, edgeAttr, source, target, sa, ta, u);
 
-    M += weight;
+      M += weight;
 
-    var sourceCommunity = communities[source];
-    var targetCommunity = communities[target];
+      var sourceCommunity = communities[source];
+      var targetCommunity = communities[target];
 
-    totalOutWeights[sourceCommunity] += weight;
-    totalInWeights[targetCommunity] += weight;
+      totalOutWeights[sourceCommunity] += weight;
+      totalInWeights[targetCommunity] += weight;
 
-    if (sourceCommunity !== targetCommunity) return;
+      if (sourceCommunity !== targetCommunity) return;
 
-    internalWeights[sourceCommunity] += weight;
-  });
+      internalWeights[sourceCommunity] += weight;
+    }
+  );
 
   var Q = 0;
 

@@ -33,7 +33,7 @@ function listener({
 graph.on('nodeAdded', listener);
 graph.off('nodeAdded', listener);
 
-graph.updateEdge('one', 'two', attr => {
+graph.updateEdge('one', 'two', (attr) => {
   return {weight: (attr.weight || 0) + 1};
 });
 
@@ -48,7 +48,7 @@ const weighted = new Graph<{weight: number}>();
 weighted.addNode('test', {weight: 34});
 weighted.reduceNodes((x, node, attr) => x + attr.weight, 0);
 
-weighted.on('edgeAttributesUpdated', payload => {
+weighted.on('edgeAttributesUpdated', (payload) => {
   console.log(payload.key.toUpperCase());
 
   if (payload.type === 'merge') {

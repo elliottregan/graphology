@@ -39,7 +39,10 @@ async function buildESM() {
   }
 
   // Also create .mjs version
-  await cp(path.join(DIST, 'graphology.esm.js'), path.join(DIST, 'graphology.mjs'));
+  await cp(
+    path.join(DIST, 'graphology.esm.js'),
+    path.join(DIST, 'graphology.mjs')
+  );
   if (existsSync(path.join(DIST, 'graphology.esm.js.map'))) {
     await cp(
       path.join(DIST, 'graphology.esm.js.map'),

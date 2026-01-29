@@ -16,7 +16,7 @@ const nodes = polarisation.nodes();
 const sets = {};
 const vectors = {};
 
-polarisation.forEachNode(node => {
+polarisation.forEachNode((node) => {
   const neighbors = polarisation.neighbors(node);
   vectors[node] = neighbors;
   sets[node] = new Set(neighbors);

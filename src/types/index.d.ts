@@ -1875,11 +1875,9 @@ interface GraphConstructor<
   EdgeAttributes extends Attributes = Attributes,
   GraphAttributes extends Attributes = Attributes
 > {
-  new (options?: GraphOptions): AbstractGraph<
-    NodeAttributes,
-    EdgeAttributes,
-    GraphAttributes
-  >;
+  new (
+    options?: GraphOptions
+  ): AbstractGraph<NodeAttributes, EdgeAttributes, GraphAttributes>;
 }
 
 export {

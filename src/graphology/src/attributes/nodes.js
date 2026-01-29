@@ -302,39 +302,39 @@ function attachNodeAttributesUpdater(Class, method, mode) {
  */
 const NODE_ATTRIBUTES_METHODS = [
   {
-    name: element => `get${element}Attribute`,
+    name: (element) => `get${element}Attribute`,
     attacher: attachNodeAttributeGetter
   },
   {
-    name: element => `get${element}Attributes`,
+    name: (element) => `get${element}Attributes`,
     attacher: attachNodeAttributesGetter
   },
   {
-    name: element => `has${element}Attribute`,
+    name: (element) => `has${element}Attribute`,
     attacher: attachNodeAttributeChecker
   },
   {
-    name: element => `set${element}Attribute`,
+    name: (element) => `set${element}Attribute`,
     attacher: attachNodeAttributeSetter
   },
   {
-    name: element => `update${element}Attribute`,
+    name: (element) => `update${element}Attribute`,
     attacher: attachNodeAttributeUpdater
   },
   {
-    name: element => `remove${element}Attribute`,
+    name: (element) => `remove${element}Attribute`,
     attacher: attachNodeAttributeRemover
   },
   {
-    name: element => `replace${element}Attributes`,
+    name: (element) => `replace${element}Attributes`,
     attacher: attachNodeAttributesReplacer
   },
   {
-    name: element => `merge${element}Attributes`,
+    name: (element) => `merge${element}Attributes`,
     attacher: attachNodeAttributesMerger
   },
   {
-    name: element => `update${element}Attributes`,
+    name: (element) => `update${element}Attributes`,
     attacher: attachNodeAttributesUpdater
   }
 ];

@@ -127,7 +127,10 @@ export function readOnlyProperty<T>(
 export function validateHints(hints: unknown): hints is UpdateHints {
   if (!isPlainObject(hints)) return false;
 
-  if ((hints as UpdateHints).attributes && !Array.isArray((hints as UpdateHints).attributes))
+  if (
+    (hints as UpdateHints).attributes &&
+    !Array.isArray((hints as UpdateHints).attributes)
+  )
     return false;
 
   return true;

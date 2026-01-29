@@ -1,10 +1,11 @@
 import Graph, {Attributes} from 'graphology-types';
 
 interface ICoreNumber {
-  (assign: boolean, graph: Graph, coreAttributes?: string): Record<
-    string,
-    number
-  >;
+  (
+    assign: boolean,
+    graph: Graph,
+    coreAttributes?: string
+  ): Record<string, number>;
   assign(assign: boolean, graph: Graph, coreAttributes?: string): void;
 }
 
@@ -61,10 +62,11 @@ export function kTruss<
 ): Graph<NodeAttributes, EdgeAttributes, GraphAttributes>;
 
 interface IOnionLayers {
-  (assign: boolean, graph: Graph, nodeOnionLayerAttribute?: string): Record<
-    string,
-    number
-  >;
+  (
+    assign: boolean,
+    graph: Graph,
+    nodeOnionLayerAttribute?: string
+  ): Record<string, number>;
   assign(assign: boolean, graph: Graph, nodeOnionLayerAttribute?: string): void;
 }
 
