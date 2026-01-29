@@ -20,7 +20,7 @@
     "build": "bun run build.ts",
     "prepare": "bun run build",
     "prepublishOnly": "bun test && bun run test:types && bun run build",
-    "test": "bun --bun mocha test.js",
+    "test": "bun test",
     "test:types": "tsc --noEmit"
   },
   "files": [

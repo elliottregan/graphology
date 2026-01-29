@@ -1,5 +1,0 @@
-{
-  "node-option": ["experimental-vm-modules", "no-warnings"],
-  "ui": "exports",
-  "loader": "bun"
-}
