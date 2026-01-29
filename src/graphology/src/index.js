@@ -86,7 +86,6 @@ Graph.UsageGraphError = UsageGraphError;
 
 export default Graph;
 
-/*
 export {
   Graph,
   DirectedGraph,
@@ -98,4 +97,3 @@ export {
   NotFoundGraphError,
   UsageGraphError
 };
-*/

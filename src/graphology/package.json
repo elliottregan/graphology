@@ -3,16 +3,15 @@
   "version": "0.26.0",
   "description": "A robust and multipurpose Graph object for JavaScript and TypeScript.",
   "type": "module",
-  "main": "./dist/graphology.cjs.js",
-  "module": "./dist/graphology.esm.js",
+  "main": "./dist/graphology.js",
+  "module": "./dist/graphology.js",
   "browser": "./dist/graphology.umd.min.js",
   "types": "./dist/graphology.d.ts",
   "exports": {
     ".": {
       "types": "./dist/graphology.d.ts",
-      "import": "./dist/graphology.mjs",
-      "require": "./dist/graphology.cjs.js",
-      "default": "./dist/graphology.esm.js"
+      "import": "./dist/graphology.js",
+      "default": "./dist/graphology.js"
     }
   },
   "scripts": {

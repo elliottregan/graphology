@@ -2,9 +2,8 @@
  * Graphology Build Script
  * =======================
  *
- * Uses Bun to build multiple output formats.
+ * Uses Bun to build ESM and UMD bundles.
  */
-import {$} from 'bun';
 import {existsSync} from 'fs';
 import {rm, cp} from 'fs/promises';
 import path from 'path';
@@ -30,7 +29,7 @@ async function buildESM() {
     format: 'esm',
     target: 'browser',
     sourcemap: 'external',
-    naming: 'graphology.esm.js'
+    naming: 'graphology.js'
   });
 
   if (!result.success) {
@@ -38,39 +37,20 @@ async function buildESM() {
     process.exit(1);
   }
 
-  // Also create .mjs version
-  await cp(
-    path.join(DIST, 'graphology.esm.js'),
-    path.join(DIST, 'graphology.mjs')
-  );
-  if (existsSync(path.join(DIST, 'graphology.esm.js.map'))) {
+  // Also create .mjs version for explicit ESM
+  await cp(path.join(DIST, 'graphology.js'), path.join(DIST, 'graphology.mjs'));
+  if (existsSync(path.join(DIST, 'graphology.js.map'))) {
     await cp(
-      path.join(DIST, 'graphology.esm.js.map'),
+      path.join(DIST, 'graphology.js.map'),
       path.join(DIST, 'graphology.mjs.map')
     );
   }
 }
 
-async function buildCJS() {
-  const result = await Bun.build({
-    entrypoints: [path.join(SRC, 'endpoint.cjs.js')],
-    outdir: DIST,
-    format: 'cjs',
-    target: 'node',
-    sourcemap: 'external',
-    naming: 'graphology.cjs.js'
-  });
-
-  if (!result.success) {
-    console.error('CJS build failed:', result.logs);
-    process.exit(1);
-  }
-}
-
 async function buildUMD() {
-  // Build unminified UMD (IIFE with global name)
+  // Build unminified UMD (IIFE for browser script tags)
   const result = await Bun.build({
-    entrypoints: [path.join(SRC, 'endpoint.cjs.js')],
+    entrypoints: [path.join(SRC, 'endpoint.esm.js')],
     outdir: DIST,
     format: 'iife',
     target: 'browser',
@@ -88,7 +68,7 @@ async function buildUMD() {
 
   // Build minified UMD
   const minResult = await Bun.build({
-    entrypoints: [path.join(SRC, 'endpoint.cjs.js')],
+    entrypoints: [path.join(SRC, 'endpoint.esm.js')],
     outdir: DIST,
     format: 'iife',
     target: 'browser',
@@ -107,7 +87,6 @@ async function buildUMD() {
 }
 
 async function copyTypes() {
-  // Copy the TypeScript declaration file
   const srcTypes = path.join(SRC, 'endpoint.esm.d.ts');
   const distTypes = path.join(DIST, 'graphology.d.ts');
 
@@ -122,9 +101,6 @@ async function main() {
 
   console.log('Building ESM...');
   await buildESM();
-
-  console.log('Building CJS...');
-  await buildCJS();
 
   console.log('Building UMD...');
   await buildUMD();
