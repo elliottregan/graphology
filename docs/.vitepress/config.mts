@@ -5,6 +5,9 @@ export default defineConfig({
   description:
     'A robust and multipurpose Graph object for JavaScript and TypeScript',
 
+  // Base path for deployment (set to /vitepress/ for comparison deployment)
+  base: process.env.VITEPRESS_BASE || '/',
+
   // Use docs as the root
   srcDir: '.',
   outDir: './.vitepress/dist',

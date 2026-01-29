@@ -25,6 +25,19 @@ jobs:
         with:
           fetch-depth: 0
 
+      # Checkout Jekyll docs from master branch to a separate directory
+      - name: Checkout Jekyll docs from master
+        run: |
+          git checkout origin/master -- docs/Gemfile docs/_config.yml docs/_includes docs/_layouts docs/_sass
+          # Keep the markdown files from current branch but need Jekyll build config
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+          working-directory: docs
+
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
@@ -33,16 +46,32 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
-      - name: Install dependencies
+      - name: Install JS dependencies
         run: bun install
 
-      - name: Build documentation
-        run: bun run docs:build
+      # Build Jekyll site (main docs at root)
+      - name: Build Jekyll documentation
+        run: |
+          cd docs
+          bundle install
+          bundle exec jekyll build --destination _site
+        env:
+          JEKYLL_ENV: production
+
+      # Build VitePress site (comparison docs at /vitepress/)
+      - name: Build VitePress documentation
+        run: |
+          bun run docs:build
+          # Move VitePress output to vitepress subdirectory of Jekyll site
+          mkdir -p docs/_site/vitepress
+          cp -r docs/.vitepress/dist/* docs/_site/vitepress/
+        env:
+          VITEPRESS_BASE: /vitepress/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs/.vitepress/dist
+          path: docs/_site
 
   deploy:
     name: Deploy to GitHub Pages
