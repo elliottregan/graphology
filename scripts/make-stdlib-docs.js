@@ -1,41 +1,49 @@
-const libs = require('../docs/_libs.json');
-const path = require('path');
-const fs = require('fs');
-const rimraf = require('rimraf');
+/**
+ * Script to generate standard library documentation from package READMEs
+ * Updated for VitePress
+ */
+import {readFileSync, writeFileSync, existsSync, readdirSync, unlinkSync} from 'fs';
+import {join, dirname} from 'path';
+import {fileURLToPath} from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
+const libs = JSON.parse(readFileSync(join(__dirname, '../docs/_libs.json'), 'utf-8'));
 
 const ARGUMENT_TYPE = /_(\?[^_]+)_/g;
 const DEFAULT_TYPE = /\[`([^`]+)`\](?!\()/g;
 
-const docsDirectory = path.join(__dirname, '../docs/standard-library');
+const docsDirectory = join(__dirname, '../docs/standard-library');
 
 const stdlib = Object.entries(libs).map(([name, description]) => {
   return {name, description};
 });
 
-rimraf.sync(path.join(docsDirectory, '*.md'));
+// Clean existing generated files
+const existingFiles = readdirSync(docsDirectory);
+for (const file of existingFiles) {
+  if (file.endsWith('.md') && file !== 'index.md') {
+    unlinkSync(join(docsDirectory, file));
+  }
+}
 
 const toc = stdlib
   .map(({name, description}) => {
-    return `* [${name}](./${name}): *${description}*`;
+    return `- [${name}](./${name}): *${description}*`;
   })
   .join('\n');
 
-const indexHeader = `---
-layout: default
-title: Standard library
-nav_order: 1
-has_children: true
-has_toc: false
+const indexContent = `---
+title: Standard Library
 ---
 
-# Standard library
+# Standard Library
 
 ${toc}
 
-## Interactive rendering
+## Interactive Rendering
 
 If what you need is interactive rendering of your graphs, in web applications for instance,
-be sure to check out [sigma.js](https://www.sigmajs.org/), a webgl renderer
+be sure to check out [sigma.js](https://www.sigmajs.org/), a WebGL renderer
 designed to work with \`graphology\` and which has been created for such endeavors.
 
 ## Installation
@@ -43,7 +51,7 @@ designed to work with \`graphology\` and which has been created for such endeavo
 Any of the above packages can be installed through npm likewise (just change the name to
 the desired package):
 
-\`\`\`
+\`\`\`bash
 npm install graphology-metrics
 \`\`\`
 
@@ -53,7 +61,7 @@ a little bit more complicated to optimize through tree-shaking).
 
 You can install it thusly:
 
-\`\`\`
+\`\`\`bash
 npm install graphology-library
 \`\`\`
 
@@ -77,37 +85,52 @@ import * as lib from 'graphology-library/browser';
 \`\`\`
 `;
 
-fs.writeFileSync(path.join(docsDirectory, 'index.md'), indexHeader);
+writeFileSync(join(docsDirectory, 'index.md'), indexContent);
+console.log('Generated: index.md');
 
-stdlib.forEach(({name}, i) => {
-  const libPath = path.join(__dirname, '../src', name);
+stdlib.forEach(({name}) => {
+  const libPath = join(__dirname, '../src', name);
 
-  let readme = fs.readFileSync(path.join(libPath, 'README.md'), 'utf-8');
+  let readme = readFileSync(join(libPath, 'README.md'), 'utf-8');
 
-  const hasChangelog = fs.existsSync(path.join(libPath, 'CHANGELOG.md'));
-
+  const hasChangelog = existsSync(join(libPath, 'CHANGELOG.md'));
   const githubUrl = `https://github.com/graphology/graphology/tree/master/src/${name}`;
 
-  readme = readme.replace(/https:\/\/graphology\.github\.io/, '..');
+  // Transform links - only for documentation URLs, not badges/workflows
+  // Transform graphology.github.io links to relative paths
+  readme = readme.replace(/https:\/\/graphology\.github\.io\/standard-library/g, '/standard-library');
+  readme = readme.replace(/https:\/\/graphology\.github\.io/g, '/');
+
+  // Only transform direct library links (ending with library name or #anchor)
+  // Don't transform workflow/badge URLs
   readme = readme.replace(
-    /https:\/\/github\.com\/graphology\/graphology-([A-Za-z\-]+)/g,
+    /https:\/\/github\.com\/graphology\/graphology-([A-Za-z\-]+)(?=\)|\s|#|$)/g,
     '/standard-library/$1'
   );
+
+  // Add styling to type annotations
   readme = readme.replace(ARGUMENT_TYPE, '<span class="code">$1</span>');
   readme = readme.replace(DEFAULT_TYPE, '<span class="default">$1</span>');
 
+  // Build links section
+  const links = [`[Library directory](${githubUrl})`];
+  if (hasChangelog) {
+    links.push(`[Changelog](${githubUrl}/CHANGELOG.md)`);
+  }
+
   const content = `---
-layout: default
 title: ${name}
-nav_order: ${i}
-parent: Standard library
-aux_links:
-  "Library directory": "${githubUrl}"
-  ${hasChangelog ? `"Changelog": "${githubUrl}/CHANGELOG.md"` : ''}
 ---
+
+<div class="lib-links">
+${links.join(' | ')}
+</div>
 
 ${readme}
 `;
 
-  fs.writeFileSync(path.join(docsDirectory, `${name}.md`), content);
+  writeFileSync(join(docsDirectory, `${name}.md`), content);
+  console.log(`Generated: ${name}.md`);
 });
+
+console.log('\\nStandard library docs generation complete!');

@@ -1,19 +1,5 @@
 ---
-layout: default
 title: Events
-nav_order: 11
-menu_toc:
-  - nodeAdded
-  - edgeAdded
-  - nodeDropped
-  - edgeDropped
-  - cleared
-  - edgesCleared
-  - attributesUpdated
-  - nodeAttributesUpdated
-  - edgeAttributesUpdated
-  - eachNodeAttributesUpdated
-  - eachEdgeAttributesUpdated
 ---
 
 

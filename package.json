@@ -14,15 +14,14 @@
     "format": "prettier --write './src/**/*.{js,ts,md}'",
     "format:check": "prettier --check './src/**/*.{js,ts,md}'",
     "typecheck": "tsc --noEmit",
-    "docs:build": "cd docs && bundle exec jekyll build",
-    "docs:clean": "rimraf docs/.git docs/_site docs/.jekyll-cache docs/.jekyll-metadata docs/.sass-cache",
-    "docs:install": "cd docs && bundle install",
-    "docs:update-lib": "bun scripts/make-stdlib-docs.js",
-    "docs:deploy": "bun run docs:clean && bun run docs:update-lib && cd docs && git init && git add . && git commit --allow-empty -m 'Updating docs' && git push git@github.com:graphology/graphology.github.io master --force && rimraf docs/.git",
-    "docs": "cd docs && bundle exec jekyll serve --livereload -o --config _local_config.yml"
+    "docs": "vitepress dev docs",
+    "docs:build": "bun run docs:update-lib && vitepress build docs",
+    "docs:preview": "vitepress preview docs",
+    "docs:update-lib": "bun scripts/make-stdlib-docs.js"
   },
   "devDependencies": {
     "@types/node": "^20.11.0",
+    "vitepress": "^1.5.0",
     "@types/seedrandom": "^3.0.8",
     "@typescript-eslint/eslint-plugin": "^7.0.0",
     "@typescript-eslint/parser": "^7.0.0",

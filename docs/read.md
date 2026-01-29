@@ -1,21 +1,5 @@
 ---
-layout: default
 title: Read
-nav_order: 5
-menu_toc:
-  - "#.hasNode"
-  - "#.hasEdge"
-  - "#.edge"
-  - "#.degree"
-  - "#.degreeWithoutSelfLoops"
-  - "#.source"
-  - "#.target"
-  - "#.opposite"
-  - "#.extremities"
-  - "#.hasExtremity"
-  - "#.isDirected"
-  - "#.isSelfLoop"
-  - "#.areNeighbors"
 ---
 
 # Read

@@ -1,16 +1,14 @@
 ---
-layout: default
 title: layout-noverlap
-nav_order: 14
-parent: Standard library
-aux_links:
-  "Library directory": "https://github.com/graphology/graphology/tree/master/src/layout-noverlap"
-  "Changelog": "https://github.com/graphology/graphology/tree/master/src/layout-noverlap/CHANGELOG.md"
 ---
+
+<div class="lib-links">
+[Library directory](https://github.com/graphology/graphology/tree/master/src/layout-noverlap) | [Changelog](https://github.com/graphology/graphology/tree/master/src/layout-noverlap/CHANGELOG.md)
+</div>
 
 # Graphology Noverlap
 
-JavaScript implementation of the Noverlap anti-collision layout algorithm for [graphology](..).
+JavaScript implementation of the Noverlap anti-collision layout algorithm for [graphology](/).
 
 Note that this algorithm is iterative and might not converge easily in some cases.
 

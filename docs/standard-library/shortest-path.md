@@ -1,16 +1,14 @@
 ---
-layout: default
 title: shortest-path
-nav_order: 17
-parent: Standard library
-aux_links:
-  "Library directory": "https://github.com/graphology/graphology/tree/master/src/shortest-path"
-  "Changelog": "https://github.com/graphology/graphology/tree/master/src/shortest-path/CHANGELOG.md"
 ---
+
+<div class="lib-links">
+[Library directory](https://github.com/graphology/graphology/tree/master/src/shortest-path) | [Changelog](https://github.com/graphology/graphology/tree/master/src/shortest-path/CHANGELOG.md)
+</div>
 
 # Graphology Shortest Path
 
-Shortest path functions for [`graphology`](..).
+Shortest path functions for [`graphology`](/).
 
 ## Installation
 

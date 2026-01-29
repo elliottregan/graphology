@@ -1,16 +1,14 @@
 ---
-layout: default
 title: graphml
-nav_order: 9
-parent: Standard library
-aux_links:
-  "Library directory": "https://github.com/graphology/graphology/tree/master/src/graphml"
-  
 ---
+
+<div class="lib-links">
+[Library directory](https://github.com/graphology/graphology/tree/master/src/graphml)
+</div>
 
 # Graphology GRAPHML Utilities
 
-GRAPHML parser & writer for [`graphology`](..).
+GRAPHML parser & writer for [`graphology`](/).
 
 For more information about the GRAPHML file format, you can head [there](http://graphml.graphdrawing.org/).
 

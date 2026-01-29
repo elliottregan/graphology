@@ -1,10 +1,5 @@
 ---
-layout: default
 title: Known methods
-nav_order: 14
-menu_toc:
-  - "#.toJSON"
-  - "#.inspect"
 ---
 
 # Known methods

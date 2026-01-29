@@ -1,16 +1,14 @@
 ---
-layout: default
 title: indices
-nav_order: 10
-parent: Standard library
-aux_links:
-  "Library directory": "https://github.com/graphology/graphology/tree/master/src/indices"
-  "Changelog": "https://github.com/graphology/graphology/tree/master/src/indices/CHANGELOG.md"
 ---
+
+<div class="lib-links">
+[Library directory](https://github.com/graphology/graphology/tree/master/src/indices) | [Changelog](https://github.com/graphology/graphology/tree/master/src/indices/CHANGELOG.md)
+</div>
 
 # Graphology Indices
 
-Miscellaneous indices to be used with [`graphology`](..).
+Miscellaneous indices to be used with [`graphology`](/).
 
 ## Installation
 

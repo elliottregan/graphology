@@ -1,16 +1,14 @@
 ---
-layout: default
 title: layout-forceatlas2
-nav_order: 13
-parent: Standard library
-aux_links:
-  "Library directory": "https://github.com/graphology/graphology/tree/master/src/layout-forceatlas2"
-  "Changelog": "https://github.com/graphology/graphology/tree/master/src/layout-forceatlas2/CHANGELOG.md"
 ---
+
+<div class="lib-links">
+[Library directory](https://github.com/graphology/graphology/tree/master/src/layout-forceatlas2) | [Changelog](https://github.com/graphology/graphology/tree/master/src/layout-forceatlas2/CHANGELOG.md)
+</div>
 
 # Graphology ForceAtlas2
 
-JavaScript implementation of the [ForceAtlas2](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0098679) algorithm for [graphology](..).
+JavaScript implementation of the [ForceAtlas2](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0098679) algorithm for [graphology](/).
 
 ## Reference
 

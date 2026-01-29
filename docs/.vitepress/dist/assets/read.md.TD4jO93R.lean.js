@@ -1,0 +1,1 @@
+import{_ as i,o as a,c as h,ag as n}from"./chunks/framework.CbQjVMS6.js";const g=JSON.parse('{"title":"Read","description":"","frontmatter":{"title":"Read"},"headers":[],"relativePath":"read.md","filePath":"read.md"}'),e={name:"read.md"};function t(l,s,p,k,E,d){return a(),h("div",null,[...s[0]||(s[0]=[n("",97)])])}const y=i(e,[["render",t]]);export{g as __pageData,y as default};

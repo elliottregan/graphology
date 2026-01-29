@@ -1,16 +1,14 @@
 ---
-layout: default
 title: layout-force
-nav_order: 12
-parent: Standard library
-aux_links:
-  "Library directory": "https://github.com/graphology/graphology/tree/master/src/layout-force"
-  "Changelog": "https://github.com/graphology/graphology/tree/master/src/layout-force/CHANGELOG.md"
 ---
+
+<div class="lib-links">
+[Library directory](https://github.com/graphology/graphology/tree/master/src/layout-force) | [Changelog](https://github.com/graphology/graphology/tree/master/src/layout-force/CHANGELOG.md)
+</div>
 
 # Graphology Force layout
 
-JavaScript implementation of a basic [force directed layout algorithm](https://en.wikipedia.org/wiki/Force-directed_graph_drawing) for [graphology](..).
+JavaScript implementation of a basic [force directed layout algorithm](https://en.wikipedia.org/wiki/Force-directed_graph_drawing) for [graphology](/).
 
 In some few cases, for very small graphs, [ForceAtlas2](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0098679) can be "too efficient". This simpler force algorithm cannot spatialize larger networks, but will offer more organic movements which are more suited to some interactions with the graph such as drag and drop etc.
 

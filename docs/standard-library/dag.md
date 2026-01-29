@@ -1,16 +1,14 @@
 ---
-layout: default
 title: dag
-nav_order: 5
-parent: Standard library
-aux_links:
-  "Library directory": "https://github.com/graphology/graphology/tree/master/src/dag"
-  "Changelog": "https://github.com/graphology/graphology/tree/master/src/dag/CHANGELOG.md"
 ---
+
+<div class="lib-links">
+[Library directory](https://github.com/graphology/graphology/tree/master/src/dag) | [Changelog](https://github.com/graphology/graphology/tree/master/src/dag/CHANGELOG.md)
+</div>
 
 # Graphology DAG
 
-Functions related to Directed Acyclic Graphs (DAGs) and to be used with [`graphology`](..).
+Functions related to Directed Acyclic Graphs (DAGs) and to be used with [`graphology`](/).
 
 ## Installation
 

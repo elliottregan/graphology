@@ -1,16 +1,14 @@
 ---
-layout: default
 title: layout
-nav_order: 11
-parent: Standard library
-aux_links:
-  "Library directory": "https://github.com/graphology/graphology/tree/master/src/layout"
-  "Changelog": "https://github.com/graphology/graphology/tree/master/src/layout/CHANGELOG.md"
 ---
+
+<div class="lib-links">
+[Library directory](https://github.com/graphology/graphology/tree/master/src/layout) | [Changelog](https://github.com/graphology/graphology/tree/master/src/layout/CHANGELOG.md)
+</div>
 
 # Graphology Layout
 
-Collection of basic layout algorithms to be used with [`graphology`](..).
+Collection of basic layout algorithms to be used with [`graphology`](/).
 
 ## Installation
 

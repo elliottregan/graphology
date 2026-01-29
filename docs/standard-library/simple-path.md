@@ -1,16 +1,14 @@
 ---
-layout: default
 title: simple-path
-nav_order: 18
-parent: Standard library
-aux_links:
-  "Library directory": "https://github.com/graphology/graphology/tree/master/src/simple-path"
-  
 ---
+
+<div class="lib-links">
+[Library directory](https://github.com/graphology/graphology/tree/master/src/simple-path)
+</div>
 
 # Graphology Simple Path
 
-Simple path related functions to be used with [`graphology`](..). A "simple path" is a path where a node is not repeated.
+Simple path related functions to be used with [`graphology`](/). A "simple path" is a path where a node is not repeated.
 
 ## Installation
 

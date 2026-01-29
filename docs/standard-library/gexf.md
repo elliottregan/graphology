@@ -1,18 +1,16 @@
 ---
-layout: default
 title: gexf
-nav_order: 8
-parent: Standard library
-aux_links:
-  "Library directory": "https://github.com/graphology/graphology/tree/master/src/gexf"
-  "Changelog": "https://github.com/graphology/graphology/tree/master/src/gexf/CHANGELOG.md"
 ---
 
-[![Build Status](/standard-library/gexf/workflows/Tests/badge.svg)](/standard-library/gexf/actions)
+<div class="lib-links">
+[Library directory](https://github.com/graphology/graphology/tree/master/src/gexf) | [Changelog](https://github.com/graphology/graphology/tree/master/src/gexf/CHANGELOG.md)
+</div>
+
+[![Build Status](https://github.com/graphology/graphology-gexf/workflows/Tests/badge.svg)](https://github.com/graphology/graphology-gexf/actions)
 
 # Graphology GEXF Utilities
 
-GEXF parser & writer for [`graphology`](..).
+GEXF parser & writer for [`graphology`](/).
 
 For more information about the GEXF file format, you can head [there](https://gexf.net).
 
