@@ -1887,6 +1887,7 @@ export {
   GraphType,
   GraphOptions,
   GraphEvents,
+  UpdateHints,
   AdjacencyEntry,
   NodeEntry,
   NodeMergeResult,

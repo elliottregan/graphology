@@ -192,8 +192,8 @@ export class EdgeData<
     }
 
     // Prepending to doubly-linked list
-    head.previous = this;
-    this.next = head;
+    head.previous = this as EdgeData;
+    this.next = head as EdgeData<NodeAttributes, EdgeAttributes>;
 
     // Pointing to new head
     adj[target] = this;

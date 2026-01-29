@@ -28,6 +28,14 @@
       "graphology-types": ["./src/types"]
     }
   },
-  "include": ["src/**/*.ts", "src/**/*.js"],
-  "exclude": ["node_modules", "**/dist", "**/specs", "**/*.test.ts", "**/*.spec.ts"]
+  "include": ["src/**/*.ts"],
+  "exclude": [
+    "node_modules",
+    "**/dist",
+    "**/specs",
+    "**/*.test.ts",
+    "**/*.spec.ts",
+    "**/build.ts",
+    "**/test.ts"
+  ]
 }

@@ -41,7 +41,7 @@ export function getMatchingEdge(
   target: string,
   type: 'mixed' | 'directed' | 'undirected'
 ): unknown {
-  const sourceData = graph._nodes.get(source);
+  const sourceData = (graph as any)._nodes.get(source);
 
   let edge = null;
 
