@@ -8,11 +8,12 @@
     "build:library": "bun run --filter graphology-library build",
     "clean": "bun run --filter '*' clean",
     "test": "bun run --filter '*' test",
-    "test:types": "tsc --noEmit",
-    "lint": "eslint './src/**/*.{js,ts}'",
-    "lint:fix": "eslint './src/**/*.{js,ts}' --fix",
-    "format": "prettier --write './src/**/*.{js,ts,md}'",
-    "format:check": "prettier --check './src/**/*.{js,ts,md}'",
+    "lint": "biome lint ./src",
+    "lint:fix": "biome lint --write ./src",
+    "format": "biome format --write ./src",
+    "format:check": "biome format ./src",
+    "check": "biome check ./src",
+    "check:fix": "biome check --write ./src",
     "typecheck": "tsc --noEmit",
     "docs": "vitepress dev docs",
     "docs:build": "bun run docs:update-lib && vitepress build docs",
@@ -20,19 +21,15 @@
     "docs:update-lib": "bun scripts/make-stdlib-docs.js"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.9.0",
     "@types/node": "^20.11.0",
-    "vitepress": "^1.5.0",
     "@types/seedrandom": "^3.0.8",
-    "@typescript-eslint/eslint-plugin": "^7.0.0",
-    "@typescript-eslint/parser": "^7.0.0",
-    "eslint": "^8.56.0",
-    "eslint-config-prettier": "^9.1.0",
     "lodash": "^4.17.21",
-    "prettier": "^3.2.0",
     "rimraf": "^5.0.5",
     "seedrandom": "^3.0.5",
     "simple-statistics": "^7.8.3",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "vitepress": "^1.5.0"
   },
   "dependencies": {
     "graphology": "workspace:*",
@@ -64,10 +61,5 @@
     "graphology-traversal": "workspace:*",
     "graphology-types": "workspace:*",
     "graphology-utils": "workspace:*"
-  },
-  "prettier": {
-    "singleQuote": true,
-    "bracketSpacing": false,
-    "trailingComma": "none"
   }
 }
