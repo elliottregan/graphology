@@ -31,10 +31,7 @@ interface HITS {
   assign<
     NodeAttributes extends Attributes = Attributes,
     EdgeAttributes extends Attributes = Attributes
-  >(
-    graph: Graph,
-    options?: HITSOptions<NodeAttributes, EdgeAttributes>
-  ): void;
+  >(graph: Graph, options?: HITSOptions<NodeAttributes, EdgeAttributes>): void;
 }
 
 declare const hits: HITS;

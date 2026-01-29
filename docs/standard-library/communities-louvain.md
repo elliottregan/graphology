@@ -1,16 +1,14 @@
 ---
-layout: default
 title: communities-louvain
-nav_order: 3
-parent: Standard library
-aux_links:
-  "Library directory": "https://github.com/graphology/graphology/tree/master/src/communities-louvain"
-  "Changelog": "https://github.com/graphology/graphology/tree/master/src/communities-louvain/CHANGELOG.md"
 ---
+
+<div class="lib-links">
+[Library directory](https://github.com/graphology/graphology/tree/master/src/communities-louvain) | [Changelog](https://github.com/graphology/graphology/tree/master/src/communities-louvain/CHANGELOG.md)
+</div>
 
 # Graphology Communities Louvain
 
-Implementation of the [Louvain algorihtm](https://en.wikipedia.org/wiki/Louvain_modularity) for community detection to be used with [`graphology`](..).
+Implementation of the [Louvain algorihtm](https://en.wikipedia.org/wiki/Louvain_modularity) for community detection to be used with [`graphology`](/).
 
 ## References
 

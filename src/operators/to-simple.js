@@ -27,31 +27,25 @@ module.exports = function toSimple(multiGraph, options) {
   var simpleGraph = multiGraph.emptyCopy({multi: false});
 
   // Processing edges
-  multiGraph.forEachEdge(function (
-    edge,
-    attr,
-    source,
-    target,
-    _sa,
-    _ta,
-    undirected
-  ) {
-    var existingEdge = undirected
-      ? simpleGraph.undirectedEdge(source, target)
-      : simpleGraph.directedEdge(source, target);
+  multiGraph.forEachEdge(
+    function (edge, attr, source, target, _sa, _ta, undirected) {
+      var existingEdge = undirected
+        ? simpleGraph.undirectedEdge(source, target)
+        : simpleGraph.directedEdge(source, target);
 
-    if (existingEdge) {
-      if (mergeEdge) {
-        simpleGraph.replaceEdgeAttributes(
-          existingEdge,
-          mergeEdge(simpleGraph.getEdgeAttributes(existingEdge), attr)
-        );
+      if (existingEdge) {
+        if (mergeEdge) {
+          simpleGraph.replaceEdgeAttributes(
+            existingEdge,
+            mergeEdge(simpleGraph.getEdgeAttributes(existingEdge), attr)
+          );
+        }
+        return;
       }
-      return;
-    }
 
-    copyEdge(simpleGraph, undirected, edge, source, target, attr);
-  });
+      copyEdge(simpleGraph, undirected, edge, source, target, attr);
+    }
+  );
 
   return simpleGraph;
 };

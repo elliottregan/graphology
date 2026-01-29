@@ -717,39 +717,39 @@ function attachEdgeAttributesUpdater(Class, method, type) {
  */
 const EDGE_ATTRIBUTES_METHODS = [
   {
-    name: element => `get${element}Attribute`,
+    name: (element) => `get${element}Attribute`,
     attacher: attachEdgeAttributeGetter
   },
   {
-    name: element => `get${element}Attributes`,
+    name: (element) => `get${element}Attributes`,
     attacher: attachEdgeAttributesGetter
   },
   {
-    name: element => `has${element}Attribute`,
+    name: (element) => `has${element}Attribute`,
     attacher: attachEdgeAttributeChecker
   },
   {
-    name: element => `set${element}Attribute`,
+    name: (element) => `set${element}Attribute`,
     attacher: attachEdgeAttributeSetter
   },
   {
-    name: element => `update${element}Attribute`,
+    name: (element) => `update${element}Attribute`,
     attacher: attachEdgeAttributeUpdater
   },
   {
-    name: element => `remove${element}Attribute`,
+    name: (element) => `remove${element}Attribute`,
     attacher: attachEdgeAttributeRemover
   },
   {
-    name: element => `replace${element}Attributes`,
+    name: (element) => `replace${element}Attributes`,
     attacher: attachEdgeAttributesReplacer
   },
   {
-    name: element => `merge${element}Attributes`,
+    name: (element) => `merge${element}Attributes`,
     attacher: attachEdgeAttributesMerger
   },
   {
-    name: element => `update${element}Attributes`,
+    name: (element) => `update${element}Attributes`,
     attacher: attachEdgeAttributesUpdater
   }
 ];

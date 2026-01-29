@@ -211,19 +211,13 @@ function largestConnectedComponentSubgraph(graph) {
     copyNode(S, key, graph.getNodeAttributes(key));
   });
 
-  graph.forEachEdge(function (
-    key,
-    attr,
-    source,
-    target,
-    sourceAttr,
-    targetAttr,
-    undirected
-  ) {
-    if (S.hasNode(source)) {
-      copyEdge(S, undirected, key, source, target, attr);
+  graph.forEachEdge(
+    function (key, attr, source, target, sourceAttr, targetAttr, undirected) {
+      if (S.hasNode(source)) {
+        copyEdge(S, undirected, key, source, target, attr);
+      }
     }
-  });
+  );
 
   return S;
 }

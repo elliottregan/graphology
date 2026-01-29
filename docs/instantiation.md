@@ -1,12 +1,5 @@
 ---
-layout: default
 title: Instantiation
-nav_order: 3
-menu_toc:
-  - Options
-  - Generics
-  - Specialized constructors
-  - "Static #.from method"
 ---
 
 # Instantiation

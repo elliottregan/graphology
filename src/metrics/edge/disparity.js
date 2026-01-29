@@ -93,38 +93,43 @@ function abstractDisparity(assign, graph, options) {
 
   var disparities = {};
 
-  graph.forEachAssymetricAdjacencyEntry(function (
-    source,
-    target,
-    sa,
-    ta,
-    edge,
-    attr,
-    undirected
-  ) {
-    var weight = getEdgeWeight(edge, attr, source, target, sa, ta, undirected);
+  graph.forEachAssymetricAdjacencyEntry(
+    function (source, target, sa, ta, edge, attr, undirected) {
+      var weight = getEdgeWeight(
+        edge,
+        attr,
+        source,
+        target,
+        sa,
+        ta,
+        undirected
+      );
 
-    if (previous !== source) {
-      previous = source;
-      previousDegree = graph.degree(source);
-      previousWeightedDegree = weightedDegrees[source];
+      if (previous !== source) {
+        previous = source;
+        previousDegree = graph.degree(source);
+        previousWeightedDegree = weightedDegrees[source];
+      }
+
+      var targetDegree = graph.degree(target);
+      var targetWeightedDegree = weightedDegrees[target];
+
+      var normalizedWeightPerSource = weight / previousWeightedDegree;
+      var normalizedWeightPerTarget = weight / targetWeightedDegree;
+
+      var sourceScore = Math.pow(
+        1 - normalizedWeightPerSource,
+        previousDegree - 1
+      );
+
+      var targetScore = Math.pow(
+        1 - normalizedWeightPerTarget,
+        targetDegree - 1
+      );
+
+      disparities[edge] = Math.min(sourceScore, targetScore);
     }
-
-    var targetDegree = graph.degree(target);
-    var targetWeightedDegree = weightedDegrees[target];
-
-    var normalizedWeightPerSource = weight / previousWeightedDegree;
-    var normalizedWeightPerTarget = weight / targetWeightedDegree;
-
-    var sourceScore = Math.pow(
-      1 - normalizedWeightPerSource,
-      previousDegree - 1
-    );
-
-    var targetScore = Math.pow(1 - normalizedWeightPerTarget, targetDegree - 1);
-
-    disparities[edge] = Math.min(sourceScore, targetScore);
-  });
+  );
 
   if (assign) {
     graph.updateEachEdgeAttributes(

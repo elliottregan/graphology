@@ -212,21 +212,18 @@ function abstractAreSameGraphs(deep, relaxed, G, H) {
 
     if (!sameDirectedEdges) return false;
 
-    sameUndirectedEdges = G.everyUndirectedEdge(function (
-      _e,
-      _ea,
-      source,
-      target
-    ) {
-      if (!H.hasUndirectedEdge(source, target)) return false;
+    sameUndirectedEdges = G.everyUndirectedEdge(
+      function (_e, _ea, source, target) {
+        if (!H.hasUndirectedEdge(source, target)) return false;
 
-      if (!deep) return true;
+        if (!deep) return true;
 
-      return deepEqual(
-        G.getUndirectedEdgeAttributes(source, target),
-        H.getUndirectedEdgeAttributes(source, target)
-      );
-    });
+        return deepEqual(
+          G.getUndirectedEdgeAttributes(source, target),
+          H.getUndirectedEdgeAttributes(source, target)
+        );
+      }
+    );
 
     if (!sameUndirectedEdges) return false;
   }

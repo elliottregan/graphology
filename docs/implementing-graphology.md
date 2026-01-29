@@ -1,7 +1,5 @@
 ---
-layout: default
 title: Implementing graphology
-nav_order: 15
 ---
 
 # Implementing graphology

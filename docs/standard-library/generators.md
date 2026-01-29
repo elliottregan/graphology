@@ -1,16 +1,14 @@
 ---
-layout: default
 title: generators
-nav_order: 7
-parent: Standard library
-aux_links:
-  "Library directory": "https://github.com/graphology/graphology/tree/master/src/generators"
-  
 ---
+
+<div class="lib-links">
+[Library directory](https://github.com/graphology/graphology/tree/master/src/generators)
+</div>
 
 # Graphology Generators
 
-Various graph generators to be used with [`graphology`](..).
+Various graph generators to be used with [`graphology`](/).
 
 ## Installation
 

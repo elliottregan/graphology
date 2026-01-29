@@ -1,16 +1,14 @@
 ---
-layout: default
 title: utils
-nav_order: 21
-parent: Standard library
-aux_links:
-  "Library directory": "https://github.com/graphology/graphology/tree/master/src/utils"
-  "Changelog": "https://github.com/graphology/graphology/tree/master/src/utils/CHANGELOG.md"
 ---
+
+<div class="lib-links">
+[Library directory](https://github.com/graphology/graphology/tree/master/src/utils) | [Changelog](https://github.com/graphology/graphology/tree/master/src/utils/CHANGELOG.md)
+</div>
 
 # Graphology Utils
 
-Miscellaneous utility functions to be used with [`graphology`](..).
+Miscellaneous utility functions to be used with [`graphology`](/).
 
 ## Installation
 
@@ -280,6 +278,6 @@ updatedGraph.edges();
 _Arguments_
 
 - **graph** _Graph_: target graph.
-- **nodeKeyUdater** _function_: A function to compute a new node key from the same arguments that would be given to [`#.forEachNode`](https://graphology.github.io/iteration.html#foreachnode).
-- **edgeKeyUpdater** _function_: A function to compute a new edge key from the same arguments that would be given to [`#.forEachEdge`](https://graphology.github.io/iteration.html#foreachedge).
+- **nodeKeyUdater** _function_: A function to compute a new node key from the same arguments that would be given to [`#.forEachNode`](//iteration.html#foreachnode).
+- **edgeKeyUpdater** _function_: A function to compute a new edge key from the same arguments that would be given to [`#.forEachEdge`](//iteration.html#foreachedge).
 

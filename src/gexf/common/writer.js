@@ -288,22 +288,16 @@ function collectEdgeData(graph, reducer) {
   var edges = new Array(graph.size);
   var i = 0;
 
-  graph.forEachEdge(function (
-    edge,
-    attr,
-    source,
-    target,
-    _sa,
-    _ta,
-    undirected
-  ) {
-    var data = reducer(edge, attr);
-    data.key = edge;
-    data.source = source;
-    data.target = target;
-    data.undirected = undirected;
-    edges[i++] = data;
-  });
+  graph.forEachEdge(
+    function (edge, attr, source, target, _sa, _ta, undirected) {
+      var data = reducer(edge, attr);
+      data.key = edge;
+      data.source = source;
+      data.target = target;
+      data.undirected = undirected;
+      edges[i++] = data;
+    }
+  );
 
   return edges;
 }

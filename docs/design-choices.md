@@ -1,14 +1,10 @@
 ---
-layout: default
 title: Design choices
-nav_order: 2
 ---
 
 # Design choices
-{: .no_toc }
 
-1. TOC
-{:toc}
+
 
 ## Keys
 

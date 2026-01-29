@@ -1,21 +1,5 @@
 ---
-layout: default
 title: Mutation
-nav_order: 6
-menu_toc:
-  - "#.addNode"
-  - "#.mergeNode"
-  - "#.updateNode"
-  - "#.addEdge"
-  - "#.addEdgeWithKey"
-  - "#.mergeEdge"
-  - "#.mergeEdgeWithKey"
-  - "#.updateEdge"
-  - "#.updateEdgeWithKey"
-  - "#.dropNode"
-  - "#.dropEdge"
-  - "#.clear"
-  - "#.clearEdges"
 ---
 
 

@@ -1,16 +1,14 @@
 ---
-layout: default
 title: bipartite
-nav_order: 1
-parent: Standard library
-aux_links:
-  "Library directory": "https://github.com/graphology/graphology/tree/master/src/bipartite"
-  "Changelog": "https://github.com/graphology/graphology/tree/master/src/bipartite/CHANGELOG.md"
 ---
+
+<div class="lib-links">
+[Library directory](https://github.com/graphology/graphology/tree/master/src/bipartite) | [Changelog](https://github.com/graphology/graphology/tree/master/src/bipartite/CHANGELOG.md)
+</div>
 
 # Graphology Bipartite
 
-Functions related to bipartite graphs and to be used with [`graphology`](..).
+Functions related to bipartite graphs and to be used with [`graphology`](/).
 
 ## Installation
 

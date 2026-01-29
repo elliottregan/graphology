@@ -42,7 +42,7 @@ module.exports = function hasCycle(graph) {
   // We iterate over all nodes to be able to handle disconnected graphs
   // NOTE: possibility to early exit when we know that all nodes have already
   // been traversed
-  return graph.someNode(node => {
+  return graph.someNode((node) => {
     // Node was already seen
     if (labels[node] === BLACK) return false;
 

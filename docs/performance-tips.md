@@ -1,14 +1,10 @@
 ---
-layout: default
 title: Performance tips
-nav_order: 2.5
 ---
 
 # Performance tips
-{: .no_toc }
 
-1. TOC
-{:toc}
+
 
 ## Iterate using callback methods
 

@@ -1,16 +1,14 @@
 ---
-layout: default
 title: traversal
-nav_order: 20
-parent: Standard library
-aux_links:
-  "Library directory": "https://github.com/graphology/graphology/tree/master/src/traversal"
-  "Changelog": "https://github.com/graphology/graphology/tree/master/src/traversal/CHANGELOG.md"
 ---
+
+<div class="lib-links">
+[Library directory](https://github.com/graphology/graphology/tree/master/src/traversal) | [Changelog](https://github.com/graphology/graphology/tree/master/src/traversal/CHANGELOG.md)
+</div>
 
 # Graphology Traversal
 
-Miscellaneous traversal functions to be used with [`graphology`](..).
+Miscellaneous traversal functions to be used with [`graphology`](/).
 
 ## Installation
 

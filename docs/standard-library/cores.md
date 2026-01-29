@@ -1,16 +1,14 @@
 ---
-layout: default
 title: cores
-nav_order: 6
-parent: Standard library
-aux_links:
-  "Library directory": "https://github.com/graphology/graphology/tree/master/src/cores"
-  
 ---
+
+<div class="lib-links">
+[Library directory](https://github.com/graphology/graphology/tree/master/src/cores)
+</div>
 
 # Graphology Cores
 
-Various functions related to k-cores of graphs and to be used with [graphology](..).
+Various functions related to k-cores of graphs and to be used with [graphology](/).
 
 The k-core of a graph is the maximal connected subgraph in which all nodes have a degree of k or more. The main core of a graph is the k-core subgraph with the highest possible k.
 

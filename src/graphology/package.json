@@ -1,32 +1,40 @@
 {
   "name": "graphology",
   "version": "0.26.0",
-  "description": "A robust and multipurpose Graph object for JavaScript.",
-  "main": "dist/graphology.cjs.js",
-  "module": "dist/graphology.esm.js",
-  "browser": "dist/graphology.umd.min.js",
-  "types": "dist/graphology.d.ts",
+  "description": "A robust and multipurpose Graph object for JavaScript and TypeScript.",
+  "type": "module",
+  "main": "./dist/graphology.js",
+  "module": "./dist/graphology.js",
+  "browser": "./dist/graphology.umd.min.js",
+  "types": "./dist/graphology.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/graphology.d.ts",
+      "import": "./dist/graphology.js",
+      "default": "./dist/graphology.js"
+    }
+  },
   "scripts": {
     "clean": "rimraf dist specs",
-    "build": "npm run clean && rollup -c && babel tests --out-dir specs && cp src/endpoint.esm.d.ts dist/graphology.d.ts",
-    "prepare": "npm run build",
-    "prepublishOnly": "npm test && npm run test:types && npm run build",
-    "test": "mocha -u exports --require @babel/register ./test.js",
-    "test:types": "tsc --lib es2015,dom --noEmit --noImplicitAny --noImplicitReturns --strictNullChecks ./test-types.ts"
+    "build": "bun run build.ts",
+    "prepare": "bun run build",
+    "prepublishOnly": "bun test && bun run test:types && bun run build",
+    "test": "bun test",
+    "test:types": "tsc --noEmit"
   },
   "files": [
     "dist/*.js",
     "dist/*.mjs",
     "dist/*.ts",
-    "dist/*.map",
-    "specs"
+    "dist/*.map"
   ],
   "keywords": [
     "graph",
     "graph theory",
     "directed",
     "undirected",
-    "network"
+    "network",
+    "typescript"
   ],
   "repository": {
     "type": "git",
@@ -56,35 +64,5 @@
   },
   "peerDependencies": {
     "graphology-types": ">=0.24.0"
-  },
-  "babel": {
-    "presets": [
-      "@babel/preset-env"
-    ],
-    "plugins": [
-      [
-        "@babel/transform-classes",
-        {
-          "loose": true
-        }
-      ],
-      [
-        "@babel/transform-destructuring",
-        {
-          "loose": true
-        }
-      ],
-      [
-        "@babel/transform-spread",
-        {
-          "loose": true
-        }
-      ]
-    ]
-  },
-  "exports": {
-    "require": "./dist/graphology.cjs.js",
-    "import": "./dist/graphology.mjs",
-    "types": "./dist/graphology.d.ts"
   }
 }

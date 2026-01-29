@@ -1,16 +1,14 @@
 ---
-layout: default
 title: svg
-nav_order: 19
-parent: Standard library
-aux_links:
-  "Library directory": "https://github.com/graphology/graphology/tree/master/src/svg"
-  
 ---
+
+<div class="lib-links">
+[Library directory](https://github.com/graphology/graphology/tree/master/src/svg)
+</div>
 
 # Graphology SVG
 
-SVG rendering routines for [`graphology`](..).
+SVG rendering routines for [`graphology`](/).
 
 ## Installation
 

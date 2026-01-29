@@ -1,11 +1,5 @@
 ---
-layout: default
 title: Serialization
-nav_order: 12
-menu_toc:
-  - "Format"
-  - "#.import"
-  - "#.export"
 ---
 
 # Serialization

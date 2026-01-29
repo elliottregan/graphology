@@ -4,42 +4,49 @@
  *
  * Collection of functions used by the graph serialization schemes.
  */
+import type {
+  Attributes,
+  SerializedNode,
+  SerializedEdge
+} from 'graphology-types';
 import {InvalidArgumentsGraphError} from './errors';
 import {assign, isPlainObject, isEmpty} from './utils';
+import type {NodeData, EdgeData} from './data';
 
 /**
  * Formats internal node data into a serialized node.
- *
- * @param  {any}    key  - The node's key.
- * @param  {object} data - Internal node's data.
- * @return {array}       - The serialized node.
  */
-export function serializeNode(key, data) {
-  const serialized = {key};
+export function serializeNode<NodeAttributes extends Attributes = Attributes>(
+  key: string,
+  data: NodeData<NodeAttributes>
+): SerializedNode<NodeAttributes> {
+  const serialized: SerializedNode<NodeAttributes> = {key};
 
   if (!isEmpty(data.attributes))
-    serialized.attributes = assign({}, data.attributes);
+    serialized.attributes = assign({}, data.attributes) as NodeAttributes;
 
   return serialized;
 }
 
 /**
  * Formats internal edge data into a serialized edge.
- *
- * @param  {string} type - The graph's type.
- * @param  {any}    key  - The edge's key.
- * @param  {object} data - Internal edge's data.
- * @return {array}       - The serialized edge.
  */
-export function serializeEdge(type, key, data) {
-  const serialized = {
+export function serializeEdge<
+  NodeAttributes extends Attributes = Attributes,
+  EdgeAttributes extends Attributes = Attributes
+>(
+  type: 'mixed' | 'directed' | 'undirected',
+  key: string,
+  data: EdgeData<NodeAttributes, EdgeAttributes>
+): SerializedEdge<EdgeAttributes> {
+  const serialized: SerializedEdge<EdgeAttributes> = {
     key,
     source: data.source.key,
     target: data.target.key
   };
 
   if (!isEmpty(data.attributes))
-    serialized.attributes = assign({}, data.attributes);
+    serialized.attributes = assign({}, data.attributes) as EdgeAttributes;
 
   if (type === 'mixed' && data.undirected) serialized.undirected = true;
 
@@ -48,11 +55,8 @@ export function serializeEdge(type, key, data) {
 
 /**
  * Checks whether the given value is a serialized node.
- *
- * @param  {mixed} value - Target value.
- * @return {string|null}
  */
-export function validateSerializedNode(value) {
+export function validateSerializedNode(value: unknown): void {
   if (!isPlainObject(value))
     throw new InvalidArgumentsGraphError(
       'Graph.import: invalid serialized node. A serialized node should be a plain object with at least a "key" property.'
@@ -65,7 +69,8 @@ export function validateSerializedNode(value) {
 
   if (
     'attributes' in value &&
-    (!isPlainObject(value.attributes) || value.attributes === null)
+    (!isPlainObject((value as SerializedNode).attributes) ||
+      (value as SerializedNode).attributes === null)
   )
     throw new InvalidArgumentsGraphError(
       'Graph.import: invalid attributes. Attributes should be a plain object, null or omitted.'
@@ -74,11 +79,8 @@ export function validateSerializedNode(value) {
 
 /**
  * Checks whether the given value is a serialized edge.
- *
- * @param  {mixed} value - Target value.
- * @return {string|null}
  */
-export function validateSerializedEdge(value) {
+export function validateSerializedEdge(value: unknown): void {
   if (!isPlainObject(value))
     throw new InvalidArgumentsGraphError(
       'Graph.import: invalid serialized edge. A serialized edge should be a plain object with at least a "source" & "target" property.'
@@ -96,13 +98,17 @@ export function validateSerializedEdge(value) {
 
   if (
     'attributes' in value &&
-    (!isPlainObject(value.attributes) || value.attributes === null)
+    (!isPlainObject((value as SerializedEdge).attributes) ||
+      (value as SerializedEdge).attributes === null)
   )
     throw new InvalidArgumentsGraphError(
       'Graph.import: invalid attributes. Attributes should be a plain object, null or omitted.'
     );
 
-  if ('undirected' in value && typeof value.undirected !== 'boolean')
+  if (
+    'undirected' in value &&
+    typeof (value as SerializedEdge).undirected !== 'boolean'
+  )
     throw new InvalidArgumentsGraphError(
       'Graph.import: invalid undirectedness information. Undirected should be boolean or omitted.'
     );

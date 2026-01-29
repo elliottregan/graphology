@@ -126,60 +126,64 @@ function abstractChiSquareGSquare(assign, measure, graph, getEdgeWeight) {
   var totalWeights = 0;
   var weightedDegrees = {};
 
-  graph.forEachAssymetricAdjacencyEntry(function (
-    source,
-    target,
-    sa,
-    ta,
-    edge,
-    attr,
-    undirected
-  ) {
-    var weight = getEdgeWeight(edge, attr, source, target, sa, ta, undirected);
+  graph.forEachAssymetricAdjacencyEntry(
+    function (source, target, sa, ta, edge, attr, undirected) {
+      var weight = getEdgeWeight(
+        edge,
+        attr,
+        source,
+        target,
+        sa,
+        ta,
+        undirected
+      );
 
-    // sum all weights
-    totalWeights += weight;
+      // sum all weights
+      totalWeights += weight;
 
-    // compute nodes weighted degrees
-    // TODO: we could optimize one lookup here because we see all of a source's
-    // edges contiguously.
-    weightedDegrees[source] = (weightedDegrees[source] || 0) + weight;
+      // compute nodes weighted degrees
+      // TODO: we could optimize one lookup here because we see all of a source's
+      // edges contiguously.
+      weightedDegrees[source] = (weightedDegrees[source] || 0) + weight;
 
-    // Avoiding self loops
-    if (source !== target) {
-      weightedDegrees[target] = (weightedDegrees[target] || 0) + weight;
+      // Avoiding self loops
+      if (source !== target) {
+        weightedDegrees[target] = (weightedDegrees[target] || 0) + weight;
+      }
     }
-  });
+  );
 
   var edgeMeasures = {};
 
-  graph.forEachAssymetricAdjacencyEntry(function (
-    source,
-    target,
-    sa,
-    ta,
-    edge,
-    attr,
-    undirected
-  ) {
-    var weight = getEdgeWeight(edge, attr, source, target, sa, ta, undirected);
+  graph.forEachAssymetricAdjacencyEntry(
+    function (source, target, sa, ta, edge, attr, undirected) {
+      var weight = getEdgeWeight(
+        edge,
+        attr,
+        source,
+        target,
+        sa,
+        ta,
+        undirected
+      );
 
-    // TODO: we could optimize the source lookup here
-    var result = _chiSquareGSquareMeasures(
-      measure,
-      weightedDegrees[source],
-      weightedDegrees[target],
-      weight,
-      totalWeights
-    );
+      // TODO: we could optimize the source lookup here
+      var result = _chiSquareGSquareMeasures(
+        measure,
+        weightedDegrees[source],
+        weightedDegrees[target],
+        weight,
+        totalWeights
+      );
 
-    edgeMeasures[edge] = result;
+      edgeMeasures[edge] = result;
 
-    // TODO: use graph.updateEachEdgeAttributes
-    if (assign) {
-      graph.setEdgeAttribute(edge, measure, result);
+      // TODO: use graph.updateEachEdgeAttributes
+      if (assign) {
+        graph.setEdgeAttribute(edge, measure, result);
+      }
     }
-  });
+  );
 
   return edgeMeasures;
 }

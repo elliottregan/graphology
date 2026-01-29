@@ -1,15 +1,5 @@
 ---
-layout: default
 title: Properties
-nav_order: 4
-menu_toc:
-  - "#.order"
-  - "#.size"
-  - "#.type"
-  - "#.multi"
-  - "#.allowSelfLoops"
-  - "#.selfLoopCount"
-  - "#.implementation"
 ---
 
 # Properties

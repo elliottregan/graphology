@@ -1,16 +1,14 @@
 ---
-layout: default
 title: canvas
-nav_order: 2
-parent: Standard library
-aux_links:
-  "Library directory": "https://github.com/graphology/graphology/tree/master/src/canvas"
-  "Changelog": "https://github.com/graphology/graphology/tree/master/src/canvas/CHANGELOG.md"
 ---
+
+<div class="lib-links">
+[Library directory](https://github.com/graphology/graphology/tree/master/src/canvas) | [Changelog](https://github.com/graphology/graphology/tree/master/src/canvas/CHANGELOG.md)
+</div>
 
 # Graphology Canvas
 
-Canvas rendering routines for [`graphology`](..).
+Canvas rendering routines for [`graphology`](/).
 
 ## Installation
 
@@ -30,7 +28,7 @@ If you experience any issue when installing the libray check that you have the r
 
 ### Pre-requisites
 
-Each node's position must be set before rendering a graph. Two attributes called `x` and `y` must therefore be defined for all the graph nodes. [graphology-layout](/standard-library/layout) or [graphology-layout-forceatlas2](/standard-library/layout-forceatlas2), for instance, can be used to give positions to nodes if they don't have one already.
+Each node's position must be set before rendering a graph. Two attributes called `x` and `y` must therefore be defined for all the graph nodes. [graphology-layout](/standard-library/layout) or [graphology-layout-forceatlas2](https://github.com/graphology/graphology-layout-forceatlas2), for instance, can be used to give positions to nodes if they don't have one already.
 
 ### Rendering a graph in an arbitrary canvas context
 

@@ -1,16 +1,14 @@
 ---
-layout: default
 title: operators
-nav_order: 16
-parent: Standard library
-aux_links:
-  "Library directory": "https://github.com/graphology/graphology/tree/master/src/operators"
-  "Changelog": "https://github.com/graphology/graphology/tree/master/src/operators/CHANGELOG.md"
 ---
+
+<div class="lib-links">
+[Library directory](https://github.com/graphology/graphology/tree/master/src/operators) | [Changelog](https://github.com/graphology/graphology/tree/master/src/operators/CHANGELOG.md)
+</div>
 
 # Graphology Operators
 
-Miscellaneous operators to be used with [`graphology`](..).
+Miscellaneous operators to be used with [`graphology`](/).
 
 ## Installation
 

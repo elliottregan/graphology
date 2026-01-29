@@ -28,41 +28,35 @@ module.exports = function renameGraphKeys(
   // Renaming edges
   var currentSource, currentSourceRenamed;
 
-  graph.forEachAssymetricAdjacencyEntry(function (
-    source,
-    target,
-    _sa,
-    _ta,
-    key,
-    attr,
-    undirected
-  ) {
-    // Leveraging the ordered adjacency to save lookups
-    if (source !== currentSource) {
-      currentSource = source;
-      currentSourceRenamed = nodeKeyMapping[source];
+  graph.forEachAssymetricAdjacencyEntry(
+    function (source, target, _sa, _ta, key, attr, undirected) {
+      // Leveraging the ordered adjacency to save lookups
+      if (source !== currentSource) {
+        currentSource = source;
+        currentSourceRenamed = nodeKeyMapping[source];
 
-      if (typeof currentSourceRenamed === 'undefined')
-        currentSourceRenamed = source;
+        if (typeof currentSourceRenamed === 'undefined')
+          currentSourceRenamed = source;
+      }
+
+      var targetRenamed = nodeKeyMapping[target];
+
+      if (typeof targetRenamed === 'undefined') targetRenamed = target;
+
+      var renamedKey = edgeKeyMapping[key];
+
+      if (typeof renamedKey === 'undefined') renamedKey = key;
+
+      copyEdge(
+        renamed,
+        undirected,
+        renamedKey,
+        currentSourceRenamed,
+        targetRenamed,
+        attr
+      );
     }
-
-    var targetRenamed = nodeKeyMapping[target];
-
-    if (typeof targetRenamed === 'undefined') targetRenamed = target;
-
-    var renamedKey = edgeKeyMapping[key];
-
-    if (typeof renamedKey === 'undefined') renamedKey = key;
-
-    copyEdge(
-      renamed,
-      undirected,
-      renamedKey,
-      currentSourceRenamed,
-      targetRenamed,
-      attr
-    );
-  });
+  );
 
   return renamed;
 };

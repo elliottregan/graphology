@@ -94,7 +94,7 @@ function topologicalSort(graph) {
   const sortedNodes = new Array(graph.order);
   let i = 0;
 
-  forEachNodeInTopologicalOrder(graph, node => {
+  forEachNodeInTopologicalOrder(graph, (node) => {
     sortedNodes[i++] = node;
   });
 
@@ -133,7 +133,7 @@ function topologicalGenerations(graph) {
 
   const generations = [];
 
-  forEachTopologicalGeneration(graph, generation => {
+  forEachTopologicalGeneration(graph, (generation) => {
     generations.push(generation);
   });
 

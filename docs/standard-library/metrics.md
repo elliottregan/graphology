@@ -1,16 +1,14 @@
 ---
-layout: default
 title: metrics
-nav_order: 15
-parent: Standard library
-aux_links:
-  "Library directory": "https://github.com/graphology/graphology/tree/master/src/metrics"
-  "Changelog": "https://github.com/graphology/graphology/tree/master/src/metrics/CHANGELOG.md"
 ---
+
+<div class="lib-links">
+[Library directory](https://github.com/graphology/graphology/tree/master/src/metrics) | [Changelog](https://github.com/graphology/graphology/tree/master/src/metrics/CHANGELOG.md)
+</div>
 
 # Graphology metrics
 
-Miscellaneous metrics to be used with [`graphology`](..).
+Miscellaneous metrics to be used with [`graphology`](/).
 
 ## Installation
 

@@ -1,0 +1,86 @@
+{
+  "$schema": "https://biomejs.dev/schemas/1.9.0/schema.json",
+  "organizeImports": {
+    "enabled": false
+  },
+  "files": {
+    "ignore": [
+      "node_modules",
+      "dist",
+      "specs",
+      "benchmark",
+      "docs",
+      "*.min.js",
+      "**/test/**",
+      "**/tests/**",
+      "**/package.json"
+    ],
+    "maxSize": 10485760
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true,
+      "suspicious": {
+        "noExplicitAny": "off",
+        "noAssignInExpressions": "off",
+        "noPrototypeBuiltins": "off",
+        "noSelfCompare": "off",
+        "noFocusedTests": "off",
+        "noGlobalIsNan": "off",
+        "noRedeclare": "off",
+        "noShadowRestrictedNames": "off",
+        "noConfusingVoidType": "off"
+      },
+      "style": {
+        "noUnusedTemplateLiteral": "off",
+        "useTemplate": "off",
+        "noVar": "off",
+        "noParameterAssign": "off",
+        "useConst": "off",
+        "useSingleVarDeclarator": "off",
+        "useImportType": "off",
+        "noArguments": "off",
+        "noCommaOperator": "off",
+        "useNumberNamespace": "off",
+        "noInferrableTypes": "off",
+        "useExponentiationOperator": "off",
+        "useNodejsImportProtocol": "off",
+        "noUselessElse": "off",
+        "useExportType": "off"
+      },
+      "complexity": {
+        "noForEach": "off",
+        "useArrowFunction": "off",
+        "useLiteralKeys": "off",
+        "noThisInStatic": "off",
+        "useOptionalChain": "off",
+        "noUselessTernary": "off",
+        "noUselessThisAlias": "off",
+        "noBannedTypes": "off"
+      },
+      "correctness": {
+        "noUnusedVariables": "off",
+        "noInnerDeclarations": "off",
+        "noConstantCondition": "off",
+        "noUnnecessaryContinue": "off",
+        "noInvalidUseBeforeDeclaration": "off"
+      },
+      "performance": {
+        "noDelete": "off"
+      }
+    }
+  },
+  "formatter": {
+    "enabled": true,
+    "indentStyle": "space",
+    "indentWidth": 2
+  },
+  "javascript": {
+    "formatter": {
+      "quoteStyle": "single",
+      "trailingCommas": "none",
+      "bracketSpacing": false
+    }
+  }
+}

@@ -331,14 +331,11 @@ describe('graphology-components', function () {
       var largestComponentSubgraph = largestConnectedComponentSubgraph(graph);
       var edgesSubgraph = [];
 
-      largestComponentSubgraph.forEachEdge(function (
-        edge,
-        attr,
-        source,
-        target
-      ) {
-        edgesSubgraph.push([attr, source, target]);
-      });
+      largestComponentSubgraph.forEachEdge(
+        function (edge, attr, source, target) {
+          edgesSubgraph.push([attr, source, target]);
+        }
+      );
 
       assert.strictEqual(edgesGraph.length, edgesSubgraph.length);
     });

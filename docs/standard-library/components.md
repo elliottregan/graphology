@@ -1,16 +1,14 @@
 ---
-layout: default
 title: components
-nav_order: 4
-parent: Standard library
-aux_links:
-  "Library directory": "https://github.com/graphology/graphology/tree/master/src/components"
-  "Changelog": "https://github.com/graphology/graphology/tree/master/src/components/CHANGELOG.md"
 ---
+
+<div class="lib-links">
+[Library directory](https://github.com/graphology/graphology/tree/master/src/components) | [Changelog](https://github.com/graphology/graphology/tree/master/src/components/CHANGELOG.md)
+</div>
 
 # Graphology Components
 
-Connected components for [`graphology`](..).
+Connected components for [`graphology`](/).
 
 ## Installation
 

@@ -1,11 +1,5 @@
 ---
-layout: default
 title: Utilities
-nav_order: 13
-menu_toc:
-  - "#.copy"
-  - "#.nullCopy"
-  - "#.emptyCopy"
 ---
 
 # Utilities
