@@ -128,8 +128,5 @@ export default defineConfig({
   },
 
   // Head tags
-  head: [
-    ['link', {rel: 'icon', type: 'image/svg+xml', href: '/logo.svg'}],
-    ['meta', {name: 'theme-color', content: '#3eaf7c'}]
-  ]
+  head: [['meta', {name: 'theme-color', content: '#3eaf7c'}]]
 });
