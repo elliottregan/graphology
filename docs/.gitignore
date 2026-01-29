@@ -3,5 +3,5 @@ _site/
 .jekyll-cache/
 .jekyll-metadata
 Gemfile.lock
-docs/.vitepress/dist/
-docs/.vitepress/cache/
+.vitepress/dist/
+.vitepress/cache/
