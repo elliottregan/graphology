@@ -39,21 +39,3 @@ jobs:
           asset_name: graphology.min.js
           tag: ${{ github.ref }}
           overwrite: true
-
-      - name: Upload graphology-library
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ./src/library/dist/graphology-library.js
-          asset_name: graphology-library.js
-          tag: ${{ github.ref }}
-          overwrite: true
-
-      - name: Upload graphology-library minified
-        uses: svenstaro/upload-release-action@v2
-        with:
-          repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ./src/library/dist/graphology-library.min.js
-          asset_name: graphology-library.min.js
-          tag: ${{ github.ref }}
-          overwrite: true

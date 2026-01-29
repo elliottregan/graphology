@@ -12,10 +12,10 @@
   ],
   "scripts": {
     "clean": "rm -rf ./dist",
-    "build": "npm run clean && rollup -c",
-    "prepublishOnly": "npm run test:types && npm run build",
-    "test": "npm run test:types",
-    "test:types": "ts-node test.ts"
+    "build": "bun run build.ts",
+    "prepublishOnly": "bun run test:types && bun run build",
+    "test": "bun run test:types",
+    "test:types": "bun run tsc --noEmit"
   },
   "repository": {
     "type": "git",

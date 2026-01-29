@@ -3,9 +3,8 @@
   "private": true,
   "workspaces": ["src/*"],
   "scripts": {
-    "build": "bun run clean && bun run build:graphology && bun run build:library",
+    "build": "bun run build:graphology",
     "build:graphology": "bun run --filter graphology build",
-    "build:library": "bun run --filter graphology-library build",
     "clean": "bun run --filter '*' clean",
     "test": "bun run --filter graphology test",
     "lint": "biome lint ./src",
