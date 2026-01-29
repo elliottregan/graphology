@@ -6,16 +6,16 @@
  * implementations (normalized typology rather than relying on error
  * messages to check whether the correct error was found).
  */
+
 export class GraphError extends Error {
-  constructor(message) {
-    super();
+  constructor(message: string) {
+    super(message);
     this.name = 'GraphError';
-    this.message = message;
   }
 }
 
 export class InvalidArgumentsGraphError extends GraphError {
-  constructor(message) {
+  constructor(message: string) {
     super(message);
     this.name = 'InvalidArgumentsGraphError';
 
@@ -29,7 +29,7 @@ export class InvalidArgumentsGraphError extends GraphError {
 }
 
 export class NotFoundGraphError extends GraphError {
-  constructor(message) {
+  constructor(message: string) {
     super(message);
     this.name = 'NotFoundGraphError';
 
@@ -40,7 +40,7 @@ export class NotFoundGraphError extends GraphError {
 }
 
 export class UsageGraphError extends GraphError {
-  constructor(message) {
+  constructor(message: string) {
     super(message);
     this.name = 'UsageGraphError';
 
