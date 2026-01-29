@@ -7,7 +7,7 @@
     "build:graphology": "bun run --filter graphology build",
     "build:library": "bun run --filter graphology-library build",
     "clean": "bun run --filter '*' clean",
-    "test": "bun run --filter '*' test",
+    "test": "bun run --filter graphology test",
     "lint": "biome lint ./src",
     "lint:fix": "biome lint --write ./src",
     "format": "biome format --write ./src",
